@@ -1,0 +1,21 @@
+.track{
+    display: flex;
+    border: 1px solid #000;
+    column-gap: 20px;
+    padding: 15px;
+}
+.track__poster{
+
+}
+.track__about{
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+    align-items: center;
+}
+.track__author{
+
+}
+.track__duration{
+
+}
