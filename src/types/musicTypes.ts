@@ -1,5 +1,7 @@
-export interface IMusic{
-    author:string;
-    poster:string;
-    audio:string;
+export interface IMusic {
+  _id: string;
+  author: string;
+  info: string;
+  poster: string;
+  audio: string;
 }

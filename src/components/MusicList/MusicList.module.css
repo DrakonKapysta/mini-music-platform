@@ -1,5 +1,9 @@
-.musicList{
-    padding: 25px 45px;
-    flex:1;
-    background-color: #ccc;
+.musicList {
+  padding: 25px 45px;
+  flex: 1;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  overflow-y: scroll;
 }
