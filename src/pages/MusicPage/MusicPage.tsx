@@ -3,11 +3,15 @@ import MusicPlayer from "../../components/MusicPlayer/MusicPlayer";
 import MusicList from "../../components/MusicList/MusicList";
 import { FC, useState } from "react";
 import { IMusic } from "../../types/musicTypes";
-import useMusic from "../../hooks/useMusicQuery";
+import useMusicQuery from "../../hooks/useMusicQuery";
 
 const MusicPage: FC = () => {
-  const [music, setMusic] = useState<IMusic[]>([]);
-  const { isLoading, data, isSuccess } = useMusic();
+  const [currentMusic, setCurrentMusic] = useState<string | null>(null);
+  const { isLoading, data, isSuccess } = useMusicQuery();
+
+  const handleMusicClick = (music: string) => {
+    setCurrentMusic(music);
+  };
 
   return (
     <div className={cl.wrapper}>
@@ -23,9 +27,14 @@ const MusicPage: FC = () => {
           <h2>Loading...</h2>
         </div>
       ) : (
-        isSuccess && <MusicList musicList={data as IMusic[]} />
+        isSuccess && (
+          <MusicList
+            handleMusicClick={handleMusicClick}
+            musicList={data as IMusic[]}
+          />
+        )
       )}
-      <MusicPlayer />
+      <MusicPlayer currentMusic={currentMusic} />
     </div>
   );
 };

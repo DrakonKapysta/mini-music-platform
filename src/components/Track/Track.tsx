@@ -2,11 +2,27 @@ import cl from "./Track.module.css";
 import { FC } from "react";
 import { IMusic } from "../../types/musicTypes";
 
-const Track: FC<IMusic> = ({ poster, author }) => {
+interface ITrackProps extends IMusic {
+  handleMusicClick: (music: string) => void;
+}
+
+const Track: FC<ITrackProps> = ({
+  poster,
+  author,
+  handleMusicClick,
+  audio,
+}) => {
   return (
     <div className={cl.track}>
-      <button className={cl.track__poster}>
-        <img src={`http://localhost:5000/image/${poster}`} alt="Poster" />
+      <button
+        className={cl.track__poster}
+        onClick={() => handleMusicClick(audio)}
+      >
+        <img
+          className={cl.track__posterPlay}
+          src={`http://localhost:5000/image/${poster}`}
+          alt="Poster"
+        />
       </button>
       <div className={cl.track__about}>
         <p className={cl.track__author}>{author}</p>

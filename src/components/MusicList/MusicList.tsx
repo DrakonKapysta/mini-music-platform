@@ -5,13 +5,15 @@ import { IMusic } from "../../types/musicTypes";
 
 type MusicListProps = {
   musicList: IMusic[];
+  handleMusicClick: (music: string) => void;
 };
 
-const MusicList: FC<MusicListProps> = ({ musicList }) => {
+const MusicList: FC<MusicListProps> = ({ musicList, handleMusicClick }) => {
   return (
     <div className={cl.musicList}>
       {musicList.map((music) => (
         <Track
+          handleMusicClick={handleMusicClick}
           key={music._id}
           poster={music.poster}
           author={music.author}
